@@ -2,7 +2,7 @@
 //  ToDoListItem+CoreDataProperties.swift
 //  ToDoApp
 //
-//  Created by JoyDev on 25.11.2021.
+//  Created by JoyDev on 30.11.2021.
 //
 //
 
