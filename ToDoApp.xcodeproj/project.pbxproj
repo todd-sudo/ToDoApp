@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B3978FE2758D0C50033D1DC /* Crud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3978FD2758D0C50033D1DC /* Crud.swift */; };
 		2BB32235274FB3F90005D145 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB32234274FB3F90005D145 /* AppDelegate.swift */; };
 		2BB32237274FB3F90005D145 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB32236274FB3F90005D145 /* SceneDelegate.swift */; };
 		2BB32239274FB3F90005D145 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB32238274FB3F90005D145 /* ViewController.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2B3978FD2758D0C50033D1DC /* Crud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Crud.swift; sourceTree = "<group>"; };
 		2BB32231274FB3F90005D145 /* ToDoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BB32234274FB3F90005D145 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2BB32236274FB3F90005D145 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -72,6 +74,7 @@
 				2BB32242274FB3FB0005D145 /* LaunchScreen.storyboard */,
 				2BB32245274FB3FB0005D145 /* Info.plist */,
 				2BB3225E2755FC730005D145 /* ToDoListItem.xcdatamodeld */,
+				2B3978FD2758D0C50033D1DC /* Crud.swift */,
 			);
 			path = ToDoApp;
 			sourceTree = "<group>";
@@ -147,6 +150,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B3978FE2758D0C50033D1DC /* Crud.swift in Sources */,
 				2BB32239274FB3F90005D145 /* ViewController.swift in Sources */,
 				2BB32235274FB3F90005D145 /* AppDelegate.swift in Sources */,
 				2BB32237274FB3F90005D145 /* SceneDelegate.swift in Sources */,
