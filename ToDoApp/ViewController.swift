@@ -3,29 +3,32 @@ import UIKit
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    // Получение контекста
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+//    // Получение контекста
+//    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
-    let tableView: UITableView = {
-        let table = UITableView()
-        table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        return table
+    var tableView: UITableView = {
+            let table = UITableView()
+            table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+            return table
     }()
-    
-    private var models = [ToDoListItem]()
 
+    var models = [ToDoListItem]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         title = "ToDo List"
         view.addSubview(tableView)
-        getAllItems()
+      
+        self.crudData().getAllItems()
         tableView.delegate = self
         tableView.dataSource = self
         tableView.frame = view.bounds
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(didTapAdd))
     }
-    
+
+        
     @objc private func didTapAdd() {
         let alert = UIAlertController(title: "New Item", message: "Enter new item", preferredStyle: .alert)
         
@@ -35,7 +38,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 return
             }
             
-            self?.createItem(name: text)
+            self?.crudData().createItem(name: text)
         }))
         
         present(alert, animated: true)
@@ -71,73 +74,21 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     return
                 }
                 
-                self?.updateItem(item: item, newName: newName)
+                self?.crudData().updateItem(item: item, newName: newName)
             }))
             
             self?.present(alert, animated: true)
             
         }))
         sheet.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { [weak self] _ in
-            self?.deleteItem(item: item)
+            self?.crudData().deleteItem(item: item)
         }))
         
         present(sheet, animated: true)
     }
     
-    // MARK: CRUD data
-    
-    // Получение списка объектов
-    func getAllItems() {
-        do {
-            models = try context.fetch(ToDoListItem.fetchRequest())
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        }
-        catch {
-            print("error")
-        }
-    }
-    
-    // Создание объекта
-    func createItem(name: String) {
-        let newItem = ToDoListItem(context: context)
-        newItem.name = name
-        newItem.createdAt = Date()
-        
-        do {
-            try context.save()
-            getAllItems()
-        }
-        catch {
-            
-        }
-    }
-    
-    // Удаление объекта
-    func deleteItem(item: ToDoListItem) {
-        context.delete(item)
-        
-        do {
-            try context.save()
-            getAllItems()
-        }
-        catch {
-            
-        }
-    }
-    
-    // Обновление объекта
-    func updateItem(item: ToDoListItem, newName: String) {
-        item.name = newName
-        
-        do {
-            try context.save()
-            getAllItems()
-        }
-        catch {
-            
-        }
+    func crudData() -> Crud {
+        let crud = Crud(models: self.models, tableView: self.tableView)
+        return crud
     }
 }
-
